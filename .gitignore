@@ -1,17 +1,95 @@
-config.yaml
+#Celery files
+smwds/celerybeat-schedule
+smwds/celerybeat.pid
+prod.py
+pid.tmp
+
+#configration
+production.cfg
+
+#redis file
+dump.rdb
+
+#Sync script
+script/
+
+#python env
+pid.tmp
+pyenv.sh
+pyenv/
+fl/
+
+.coding-ide/
+smwds/manager.py
+smwds/prod.py
+smwds/api/test.py
+*/manager.py
+manager.py
+smwds/weblib/test.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
 .tox/
 .coverage
-.idea/*
-.cache/
-__pycache__/
-*.pyc
-virtualenv_run/
-*.egg-info/
-dist/
-venv/
-env/
-docs/build/
-build/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
 
-my_rules
-*.swp
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+*.json
+*.conf
+
+#sublime 2 files
+*.sublime-workspace
+*.sublime-project 
+
+log/
