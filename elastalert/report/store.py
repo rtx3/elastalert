@@ -1,6 +1,6 @@
 from elastalert.enhancements import BaseEnhancement
 
-class DbStore(BaseEnhancement):
+class MyEnhancement(BaseEnhancement):
 
     # The enhancement is run against every match
     # The match is passed to the process function where it can be modified in any way
