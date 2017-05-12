@@ -1,4 +1,4 @@
-from elastalert.enhancements import BaseEnhancement
+from enhancements import BaseEnhancement
 
 class MyEnhancement(BaseEnhancement):
 
