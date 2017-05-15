@@ -20,4 +20,4 @@ class MyEnhancement(BaseEnhancement):
         match_json = json.dumps(match, cls=DateTimeEncoder) + '\n'
         db_ret = self.db.alerts.insert_one(match).inserted_id
         elastalert_logger.info(match_json)
-        elastalert_logger.info("Mongo DB return:" + str(db_ret))
+        elastalert_logger.info(self.rule['name'] + " Mongo DB return:" + str(db_ret))
