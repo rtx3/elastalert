@@ -18,6 +18,6 @@ class MyEnhancement(BaseEnhancement):
     # ElastAlert will do this for each enhancement linked to a rule
     def process(self, match):
         match_json = json.dumps(match, cls=DateTimeEncoder) + '\n'
-        db_ret = self.db.alerts.insert_one(match_json).inserted_id
+        db_ret = self.db.alerts.insert_one(match).inserted_id
         elastalert_logger.info(match_json)
         elastalert_logger.info("Mongo DB return:" + str(db_ret))
