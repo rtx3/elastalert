@@ -11,7 +11,7 @@ class MyEnhancement(BaseEnhancement):
     def __init__(self,rule):
         super(self.__class__, self).__init__(rule)
         self.dbclient = MongoClient('localhost', 27017)
-        self.db = dbclient['elastalert']
+        self.db = self.dbclient['elastalert']
 
     # The enhancement is run against every match
     # The match is passed to the process function where it can be modified in any way
