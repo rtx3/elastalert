@@ -17,7 +17,11 @@ class MyEnhancement(BaseEnhancement):
     # The match is passed to the process function where it can be modified in any way
     # ElastAlert will do this for each enhancement linked to a rule
     def process(self, match):
+        try:
+            db_collection = self.db[self.rule['name']]
+            db_ret = db_collection.insert_one(match).inserted_id
+        except Exception as e:
+            elastalert_logger.warn("Store to DB aborted: %s" % (e))
         match_json = json.dumps(match, cls=DateTimeEncoder) + '\n'
-        db_ret = self.db.alerts.insert_one(match).inserted_id
         elastalert_logger.info(match_json)
         elastalert_logger.info(self.rule['name'] + " Mongo DB return:" + str(db_ret))
