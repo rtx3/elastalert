@@ -20,9 +20,10 @@ class MyEnhancement(BaseEnhancement):
         try:
             db_collection = self.db[self.rule['name']]
             corrected_match = match
-            for key, value in match:
+            for key, value in corrected_match:
                 if '.' in key:
                     corrected_match[key.replace('.','_')] = corrected_match.pop(key)
+                corrected_match[key] = str(value)
             db_ret = db_collection.insert_one(corrected_match).inserted_id
         except Exception as e:
             elastalert_logger.warn("Store to DB aborted: %s" % (e))
