@@ -20,7 +20,7 @@ class MyEnhancement(BaseEnhancement):
         try:
             db_collection = self.db[self.rule['name']]
             corrected_match = match
-            for key, value in corrected_match.mydic.iteritems():
+            for key, value in corrected_match.iteritems():
                 if key == 'request_uri.keyword':
                     corrected_match['request_uri'] = corrected_match.pop('request_uri.keyword')
             #for key, value in match:
