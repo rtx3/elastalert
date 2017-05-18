@@ -32,6 +32,6 @@ class MyEnhancement(BaseEnhancement):
             elastalert_logger.warn("Store to DB aborted: %s" % (e))
             elastalert_logger.warn(corrected_match)
             return
-        match_json = json.dumps(match, cls=DateTimeEncoder) + '\n'
-        elastalert_logger.info(match_json)
+        #match_json = json.dumps(match, cls=DateTimeEncoder) + '\n'
+        elastalert_logger.info(match)
         elastalert_logger.info(self.rule['name'] + " Mongo DB return:" + str(db_ret))
