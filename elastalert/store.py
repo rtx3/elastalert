@@ -24,7 +24,7 @@ class MyEnhancement(BaseEnhancement):
             db_ret = db_collection.insert_one(match).inserted_id
         except Exception as e:
             elastalert_logger.warn("Store to DB aborted: %s" % (e))
-            elastalert_logger.warn(match_json)
+            elastalert_logger.warn(match)
             return
         match_json = json.dumps(match, cls=DateTimeEncoder) + '\n'
         elastalert_logger.info(match_json)
