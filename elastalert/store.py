@@ -19,9 +19,12 @@ class MyEnhancement(BaseEnhancement):
     def process(self, match):
         try:
             db_collection = self.db[self.rule['name']]
+            for key, value in match:
+                key.replace(".", "_")
             db_ret = db_collection.insert_one(match).inserted_id
         except Exception as e:
             elastalert_logger.warn("Store to DB aborted: %s" % (e))
+            return
         match_json = json.dumps(match, cls=DateTimeEncoder) + '\n'
         elastalert_logger.info(match_json)
         elastalert_logger.info(self.rule['name'] + " Mongo DB return:" + str(db_ret))
