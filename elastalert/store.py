@@ -19,8 +19,8 @@ class MyEnhancement(BaseEnhancement):
     def process(self, match):
         try:
             db_collection = self.db[self.rule['name']]
-            corrected_match = match
-            for key, value in corrected_match:
+            corrected_match = dict()
+            for key, value in match:
                 if '.' in key:
                     corrected_match[key.replace('.','_')] = corrected_match.pop(key)
                 corrected_match[key] = str(value)
