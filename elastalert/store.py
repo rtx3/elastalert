@@ -19,9 +19,12 @@ class MyEnhancement(BaseEnhancement):
     def process(self, match):
         try:
             db_collection = self.db[self.rule['name']]
-            corrected_match = { x.replace('.', '_'): match[x] for x in match.keys() }
-            #for key, value in match:
-            #    key.replace(".", "_")
+            corrected_match = dict()
+            for key, value in match:
+                if '.' in key:
+                    corrected_match[key.replace('.','_')] = match[key]
+                else:
+                    corrected_match[key] = match[key]
             db_ret = db_collection.insert_one(corrected_match).inserted_id
         except Exception as e:
             elastalert_logger.warn("Store to DB aborted: %s" % (e))
