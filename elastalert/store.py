@@ -22,8 +22,9 @@ class MyEnhancement(BaseEnhancement):
             for key, value in match:
                 key.replace(".", "_")
             db_ret = db_collection.insert_one(match).inserted_id
-        except Exception as e:
+        except Exception as e:s
             elastalert_logger.warn("Store to DB aborted: %s" % (e))
+            elastalert_logger.warn(match_json)
             return
         match_json = json.dumps(match, cls=DateTimeEncoder) + '\n'
         elastalert_logger.info(match_json)
