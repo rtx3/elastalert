@@ -19,7 +19,9 @@ class MyEnhancement(BaseEnhancement):
     def process(self, match):
         try:
             db_collection = self.db[self.rule['name']]
-            corrected_match = json.dumps(match)
+            corrected_match = match
+            if 'request_uri.keyword' in corrected_match.keys:
+                corrected_match['request_uri'] = corrected_match.pop('request_uri.keyword')
             #for key, value in match:
             #    if '.' in key:
             #        corrected_match[key.replace('.','_')] = corrected_match.pop(key)
